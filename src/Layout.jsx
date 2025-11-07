@@ -40,8 +40,8 @@ export default function Layout() {
             
             <MenuIcon />
           </IconButton>
-
-          <Box sx={{ ml: "auto", display: "flex", alignItems: "center" }}>
+          <Typography variant="h5" sx={{fontWeight: 'bold'}}>E-Mail</Typography>
+          <Box sx={{ ml: "auto", display: "flex" }}>
             <Avatar/>
             <Box sx={{ ml: 1 }}>
               <Typography variant="body1" fontWeight={600}>
