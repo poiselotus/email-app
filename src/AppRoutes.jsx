@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Mailbox1 from "../../GIT-PROJECT/src/MailBox1";
-// import Mailbox2 from "./pages/Mailbox2";
-// import Users from "./pages/Users";
+import Mailbox1 from "./MailBox1";
+// import Mailbox2 from "./Mailbox2";
+// import Users from "./Users";
 // … your other pages
 
 export default function AppRoutes() {

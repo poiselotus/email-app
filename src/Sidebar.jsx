@@ -6,7 +6,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess"
 import ExpandMore from "@mui/icons-material/ExpandMore"
 
 const menuItems = [
-    { label: "E-Mail", path: "./email",
+    { label: "E-Mail", path: "/email",
         children: [
             { label:  "Mailbox 1", path: "/mailbox1"},
             { label: "Mailbox 2", path: "/mailbox2" }

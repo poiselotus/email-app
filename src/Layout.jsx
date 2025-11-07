@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Box, Drawer, AppBar, Toolbar, IconButton, Typography, Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
-import Sidebar from "../../GIT-PROJECT/src/Sidebar";
+import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import defpic from "./assets/image 1.png"
 import AppRoutes from "./AppRoutes";
@@ -33,7 +33,6 @@ export default function Layout() {
         }}
       >
         <Toolbar>
-          {/* Hamburger only on mobile */}
           <IconButton
             onClick={handleDrawerToggle}
             sx={{ display: { md: "none" }, mr: 2 }}
@@ -96,7 +95,7 @@ export default function Layout() {
       {/* ✅ MAIN CONTENT */}
       <Box
         component="main"  
-        sx={{ flexGrow: 1,  mt: -50, mx: -68, boxShadow: 70}}
+        sx={{ flexGrow: 1, mt: 10}}
       >
         <AppRoutes />
       </Box>

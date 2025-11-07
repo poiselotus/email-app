@@ -7,13 +7,13 @@ import draft from './assets/ri_draft-fill.png'
 function MailBox1() {
   return (
     <Box >
-      <Paper sx={{width: '85vw'}}>
+      <Paper sx={{width: '86vw'}}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'FFFFFF', flexGrow: '1' }} >
           <Box >
             <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
               <Avatar />
               <Box>
-                <Typography variant='h6' mr={14} > Tarik Abaza</Typography>
+                <Typography variant='h6' ml={3} > Tarik Abaza</Typography>
                 <Typography variant='caption' color='#acaaaaff' ml={3}>From: tarik_abazza@hotmail.com <img src={dot} /> To: Me</Typography>
               </Box>
             </Container>
@@ -24,10 +24,10 @@ function MailBox1() {
         </Box>
 
 
-        <Paper  >
+        <Box  >
           <Container sx={{ display: 'flex', alignItems: 'center', gap: '10px', py: '5px', ml: '5px' }}> <img src={draft} alt="draft-image" /><Typography color='#0022FF' fontWeight={'bold'} fontSize={'20px'}>DRAFT</Typography> </Container>
           <Typography variant='h5' sx={{ display: 'flex', fontWeight: 'bold', ml: '30px' }}>Your Contract is Started</Typography>
-        </Paper>
+        </Box>
 
         <Box ml={1}>
           Dear Sales Team,
@@ -36,8 +36,7 @@ function MailBox1() {
         </Box>
 
         <Box>
-          {/* Text editor which i have no idea what to use for it. lecturer says we cant us react quill so i could import icons and make them functional i think i did preety good but this is just hard coded lay out maybe the upper layer wouldnt work as a preview i was also thinking  */}
-        </Box>
+         </Box>
       </Paper>
     </Box>
   )
