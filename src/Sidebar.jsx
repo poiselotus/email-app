@@ -1,42 +1,65 @@
-import { Box, List, ListItemButton, ListItemText, Collapse } from '@mui/material'
-import React, { useState} from 'react'
-import logo from "./assets/image 1.png"
-import { NavLink } from 'react-router-dom';
-import ExpandLess from "@mui/icons-material/ExpandLess"
-import ExpandMore from "@mui/icons-material/ExpandMore"
+import { Box, List, ListItemButton, ListItemText, Collapse, Typography} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import logo from "./assets/image 1.png";
+import { NavLink, useLocation } from "react-router-dom";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const menuItems = [
-    { label: "E-Mail", path: "/email",
-        children: [
-            { label:  "Mailbox 1", path: "/mailbox1"},
-            { label: "Mailbox 2", path: "/mailbox2" }
-        ],
-    },
-    { label: "User List", path: "/users" },
-    { label: "Companies", path: "/companies" },
-    { label: "Mailboxes", path: "/mailboxes" },
-    { label: "Blocked E-Mail", path: "/blocked" },
+  {
+    label: "E-Mail",
+    path: "/email",
+    children: [
+      { label: "Mailbox 1", path: "/mailbox1" },
+      { label: "Mailbox 2", path: "/mailbox2" }
+    ]
+  },
+  { label: "User List", path: "/users" },
+  { label: "Companies", path: "/companies" },
+  { label: "Mailboxes", path: "/mailboxes" },
+  { label: "Blocked E-Mail", path: "/blocked" }
 ];
+
 function Sidebar() {
+  const location = useLocation();
+  const [emailOpen, setEmailOpen] = useState(false);
 
-    const [emailOpen, setOpenEmail] = useState(false)
+  // Auto-open menu if current route matches any child
+  useEffect(() => {
+    if (location.pathname.startsWith("/mailbox")) {
+      setEmailOpen(true);
+    }
+  }, [location.pathname]);
 
-    return (
-        // <div>
-            <Box sx={{ p: 2 }}>
-                {/* Logo */}
-                <img src={logo} style={{ width: 150, padding: 30, height: 120, marginTop: -20 }} />
-                <List>
-                    {menuItems.map((item) => {
-                        if (item.children) {
+  return (
+    <Box >
+      {/* Logo */}
+      <img src={logo} style={{ width: 150, padding: 30, height: 120 }} />
+
+      <List>
+        {menuItems.map((item) => {
+          if (item.children) {
+            const isParentActive = item.children.some((child) =>
+              location.pathname.startsWith(child.path)
+            );
+
             return (
               <Box key={item.label}>
-                <ListItemButton onClick={() => setOpenEmail(!emailOpen)}>
+                <ListItemButton
+                  onClick={() => setEmailOpen(!emailOpen)}
+                  sx={{
+                    mb: 1,
+                    backgroundColor: isParentActive ? "#D0F5E0" : "transparent",
+                    borderLeft: isParentActive
+                      ? "4px solid #00BD7E"
+                      : "4px solid transparent",
+                    color: isParentActive ? "#00BD7E" : "#bdbdbdff"
+                  }}
+                >
                   <ListItemText primary={item.label} />
                   {emailOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
 
-                {/* Collapse children */}
                 <Collapse in={emailOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     {item.children.map((child) => (
@@ -48,13 +71,15 @@ function Sidebar() {
                         {({ isActive }) => (
                           <ListItemButton
                             sx={{
-                              pl: 4,
+                              ml: 3,
+                              mr: 3,
+                              pr: 10, 
                               mb: 1,
                               borderRadius: "6px",
-                              backgroundColor: isActive ? "#D0F5E0" : "transparent",
-                              borderLeft: isActive
-                                ? "4px solid #00BD7E"
-                                : "4px solid transparent",
+                              backgroundColor: isActive
+                                ? "#D0F5E0"
+                                : "transparent",
+                              color: isActive ? "#00BD7E" : "#d4d4d4"
                             }}
                           >
                             <ListItemText primary={child.label} />
@@ -68,25 +93,35 @@ function Sidebar() {
             );
           }
 
-                    return (
-                            <NavLink
-                            key={item.path} to={item.path}
-                            style={{ textDecoration: "none", color: "inherit" }}
-                        >
+          return (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              {({ isActive }) => (
+                <ListItemButton
+                  sx={{
+                    mb: 1,
+                    borderRadius: "6px",
+                    backgroundColor: isActive ? "#D0F5E0" : "transparent",
+                    borderLeft: isActive
+                      ? "4px solid #00BD7E"
+                      : "4px solid transparent",
+                    color: isActive ? "#00BD7E" : "inherit"
+                  }}
+                >
+                  <ListItemText primary={item.label} sx={{color: isActive? "inherit": "#b4b4b4"}}/>
+                </ListItemButton>
+              )}
+            </NavLink>
+          );
+        })}
 
-                        
-                            {({ isActive }) => (
-                                <ListItemButton sx={{ mb: 1, borderRadius: "6px", backgroundColor: isActive ? "#D0F5E0" : "transparent", borderLeft: isActive ? "4px solid #00BD7E" : "4px solid transparent", }}>
-                                    <ListItemText primary={item.label} />
-                                </ListItemButton>
-                            )}
-                        </NavLink>
-                    ); 
-                    })}
-                </List>
-            </Box>
-        // </div>
-    )
+        <Typography sx={{ mt: 45, pl: 4 }}>Log Out</Typography>
+      </List>
+    </Box>
+  );
 }
 
-export default Sidebar
+export default Sidebar;

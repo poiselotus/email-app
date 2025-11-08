@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { Box, Drawer, AppBar, Toolbar, IconButton, Typography, Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
-import Sidebar from "./Sidebar";
-import { Outlet } from "react-router-dom";
-import defpic from "./assets/image 1.png"
+import Sidebar from "./Sidebar";  
 import AppRoutes from "./AppRoutes";
 
 const drawerWidth = 240;
