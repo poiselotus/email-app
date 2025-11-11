@@ -18,11 +18,11 @@ function MailBox1() {
               <Avatar />
               <Box>
                 <Typography variant='h6' ml={3} > Tarik Abaza</Typography>
-                <Typography variant='caption' color='#acaaaaff' ml={3}>From: tarik_abazza@hotmail.com <FiberManualRecordIcon sx={{ height: 6 }} /> To: Me</Typography>
+                <Typography variant='caption' color='#9e9c9cff' ml={3}>From: tarik_abazza@hotmail.com <FiberManualRecordIcon sx={{ height: 6 }} /> To: Me</Typography>
               </Box>
             </Container>
           </Box>
-          <Box color='#acaaaaff' sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box color='#9e9c9cff' sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             2024, September 16, 08:00 am  <CloseIcon fontSize='small' />
           </Box>
         </Box>

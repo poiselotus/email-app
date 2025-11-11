@@ -78,7 +78,7 @@ function Sidebar() {
                               backgroundColor: isActive
                                 ? "#D0F5E0"
                                 : "transparent",
-                              color: isActive ? "#00BD7E" : "#d4d4d4"
+                              color: isActive ? "#00BD7E" : "#868686ff"
                             }}
                           >
                             <ListItemText primary={child.label} />
@@ -110,7 +110,7 @@ function Sidebar() {
                     color: isActive ? "#00BD7E" : "inherit"
                   }}
                 >
-                  <ListItemText primary={item.label} sx={{ color: isActive ? "inherit" : "#b4b4b4" }} />
+                  <ListItemText primary={item.label} sx={{ color: isActive ? "inherit" : "#868686ff" }} />
                 </ListItemButton>
               )}
             </NavLink>
