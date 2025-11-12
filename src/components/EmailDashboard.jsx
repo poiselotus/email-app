@@ -1,37 +1,20 @@
 "use client"
 import { useState } from "react"
 import {
-  MailOutline,
-  People,
-  Business,
-  WarningAmber,
-  Delete,
-  Logout,
-  Search,
-  ChevronLeft,
-  ChevronRight,
-  ExpandMore,
-} from "@mui/icons-material"
-import {
   Box,
-  Button,
+  Paper,
   Typography,
   Avatar,
   Tabs,
   Tab,
-  Select,
-  MenuItem,
   TextField,
   IconButton,
-  Paper,
-  Divider,
+  Select,
+  MenuItem,
   Pagination,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
 } from "@mui/material"
+import { Search } from "@mui/icons-material"
+import Sidebar from "../sidebar" // <-- using YOUR sidebar here!
 
 export default function EmailDashboard() {
   const [selectedStatus, setSelectedStatus] = useState("all")
@@ -47,14 +30,6 @@ export default function EmailDashboard() {
     { id: "manually-responded", label: "Manually Responded", color: "#FFA500" },
     { id: "auto-respond", label: "Auto Respond", color: "#00BFA5" },
     { id: "ignored-deleted", label: "Ignored/Deleted", color: "#F44336" },
-  ]
-
-  const sidebarItems = [
-    { icon: <MailOutline />, label: "E-Mail" },
-    { icon: <People />, label: "User List" },
-    { icon: <Business />, label: "Companies" },
-    { icon: <WarningAmber />, label: "Mailboxes" },
-    { icon: <Delete />, label: "Blocked E-Mail" },
   ]
 
   const emails = Array.from({ length: 30 }, (_, i) => ({
@@ -74,40 +49,18 @@ export default function EmailDashboard() {
 
   return (
     <Box display="flex" height="100vh" bgcolor="#f5f5f5">
-      {/* Sidebar */}
-      <Paper
+      {/* 👇 Your Sidebar component plugged in */}
+      <Box
         sx={{
-          width: 240,
+          width: 250,
+          borderRight: "1px solid #e0e0e0",
+          bgcolor: "#fff",
           display: "flex",
           flexDirection: "column",
-          borderRight: "1px solid #ddd",
         }}
-        square
       >
-        <Box p={2} borderBottom="1px solid #eee" textAlign="center">
-          <Typography variant="h6" color="primary">
-            Email Dashboard
-          </Typography>
-        </Box>
-
-        <List>
-          {sidebarItems.map((item) => (
-            <ListItem key={item.label} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.label} />
-            </ListItem>
-          ))}
-        </List>
-
-        <Box flexGrow={1} />
-        <Divider />
-        <ListItem button>
-          <ListItemIcon>
-            <Logout />
-          </ListItemIcon>
-          <ListItemText primary="Log Out" />
-        </ListItem>
-      </Paper>
+        <Sidebar />
+      </Box>
 
       {/* Main Section */}
       <Box flex={1} display="flex" flexDirection="column">
@@ -120,7 +73,9 @@ export default function EmailDashboard() {
           borderBottom="1px solid #ddd"
           bgcolor="#fff"
         >
-          <Typography variant="h5">E-Mail</Typography>
+          <Typography variant="h5" fontWeight="bold">
+            E-Mail
+          </Typography>
 
           <Box display="flex" alignItems="center" gap={2}>
             <TextField
@@ -146,7 +101,7 @@ export default function EmailDashboard() {
           </Box>
         </Box>
 
-        {/* Tabs for Filters */}
+        {/* Tabs (Email filters) */}
         <Tabs
           value={selectedStatus}
           onChange={(e, val) => setSelectedStatus(val)}
@@ -184,6 +139,7 @@ export default function EmailDashboard() {
                   {email.description}
                 </Typography>
               </Box>
+
               <Box textAlign="right">
                 <Typography variant="subtitle2">{email.name}</Typography>
                 <Typography variant="caption" color="text.secondary">
@@ -216,6 +172,7 @@ export default function EmailDashboard() {
               <MenuItem value={50}>50</MenuItem>
             </Select>
           </Box>
+
           <Pagination
             count={3}
             page={currentPage}
