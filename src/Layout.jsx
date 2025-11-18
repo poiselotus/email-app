@@ -30,6 +30,12 @@ export default function Layout() {
   const location = useLocation();
   const PageHeader = pageTitles[location.pathname] || "Dashboard"
 
+  const isAuthPage = location.pathname === '/forgot-password';
+
+  if (isAuthPage) {
+    return <AppRoutes />;
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       {/* ✅ HEADER */}
