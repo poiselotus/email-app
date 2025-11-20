@@ -34,7 +34,7 @@ export default function EmailDashboard() {
 
   const emails = Array.from({ length: 30 }, (_, i) => ({
     id: i + 1,
-    status: emailStatuses[Math.floor(Math.random() * 6) + 1],
+    status: emailStatuses[Math.floor(Math.random() * 6) + 1], 
     name: "Tarik Abaza",
     email: "Tarik_abaza@hotmail.com",
     subject: "Your Contract Has Started",

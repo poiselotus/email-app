@@ -11,7 +11,7 @@ const drawerWidth = 240;
 
 export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const theme = useTheme();
+  const theme = useTheme(); 
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
