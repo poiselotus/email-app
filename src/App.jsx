@@ -1,6 +1,7 @@
  import './App.css'
- import Layout from './Layout'
+//  import Layout from './Layout'
 import { BrowserRouter } from "react-router-dom";
+import AppRoutes from './AppRoutes';
  
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   return (
     <>
     <BrowserRouter>
-     <Layout/>
+      <AppRoutes/>
+     {/* <Layout/> */}
     </BrowserRouter>
     </>
   )
