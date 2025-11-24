@@ -29,7 +29,7 @@ function Sidebar() {
     if (location.pathname.startsWith("/mailbox")) {
       setEmailOpen(true);
     }
-  }, [location.pathname]);
+  }, [location.pathname]); 
 
   return (
     <Box >
