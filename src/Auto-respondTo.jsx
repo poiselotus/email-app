@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./images/logo.png"
+import logo from "./assets/logo.png"
 export default function EmailPage() {
   return (
     <div style={styles.container}>
