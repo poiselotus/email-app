@@ -1,107 +1,135 @@
+
+
 import React from "react";
-import { Grid, Box, Typography, TextField, Button } from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
+import topArt from "../assets/img1.png";
+import bottomArt from "../assets/img2.png";
+import logo from "../assets/image 1.png";
 
-function ForgotPassword() {
+export default function ForgotPassword() {
   return (
-    <Grid container sx={{ height: "100vh" }}>
-      {/* LEFT SECTION */}
-      <Grid
-        item
-        xs={12}
-        md={6}
+    <Box
+      sx={{
+        display: "flex",
+        height: "100vh",
+        flexDirection: { xs: "column", md: "row" }, // responsive
+      }}
+    >
+      {/* LEFT SIDE */}
+      <Box
         sx={{
-          backgroundColor: "#23B6A4",
-          color: "white",
+          width: { xs: "100%", md: "50%" },
+          backgroundColor: "#22A78E",
+          color: "#fff",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: 4,
+          justifyContent: "flex-start",
+          p: 6,
         }}
       >
-        {/* Top decorative box (optional background shapes can go here) */}
+        {/* TOP ART */}
         <Box
+          component="img"
+          src={topArt}
+          alt="Top Artwork"
+          sx={{
+            width: "70%",
+            maxHeight: "200px",
+            objectFit: "contain",
+            opacity: 0.5,
+            filter: "brightness(0.5)",
+            mb: 2,
+          }}
+        />
+
+        <Typography variant="h3" sx={{ fontWeight: 700 }}>
+          Forgot Password
+        </Typography>
+
+        <Typography variant="body1" sx={{ mt: 1, opacity: 0.9 }}>
+          Type your email to recover your password
+        </Typography>
+
+        {/* BOTTOM ART */}
+        <Box
+          component="img"
+          src={bottomArt}
+          alt="Bottom Artwork"
           sx={{
             width: "80%",
-            height: 150,
-            border: "1px dashed rgba(255,255,255,0.3)",
-            mb: 4,
+            maxHeight: "220px",
+            objectFit: "contain",
+            opacity: 0.5,
+            filter: "brightness(0.5)",
+            mt: "auto", // keeps it at the bottom without stretching
           }}
-        ></Box>
+        />
+      </Box>
 
-        {/* Text content */}
-        <Typography variant="h4" fontWeight="bold" gutterBottom>
-          Forgot Password?
-        </Typography>
-        <Typography variant="body1">
-          Type your E-Mail to recover password.
-        </Typography>
-
-        {/* Bottom decorative box */}
-        <Box
-          sx={{
-            width: "80%",
-            height: 150,
-            border: "1px dashed rgba(255,255,255,0.3)",
-            mt: 4,
-          }}
-        ></Box>
-      </Grid>
-
-      {/* RIGHT SECTION */}
-      <Grid
-        item
-        xs={12}
-        md={6}
+      {/* RIGHT SIDE */}
+      <Box
         sx={{
+          width: { xs: "100%", md: "50%" },
           display: "flex",
-          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#fff",
-          padding: 4,
+          px: 4,
+          py: { xs: 6, md: 0 }, // spacing for mobile
         }}
       >
-        {/* Logo */}
-        <Box sx={{ mb: 2 }}>
-          <img
-            src="/logo.png"
-            alt="Reply AI Logo"
-            style={{ width: 80, height: 80 }}
-          />
-        </Box>
-
-        {/* Title */}
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
-          Reset Your Password
-        </Typography>
-
-        {/* Email Input */}
-        <Box component="form" sx={{ width: "80%", maxWidth: 400, mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Type Your E-Mail Here"
-            type="email"
-            variant="outlined"
-            margin="normal"
-          />
-
-          {/* Reset Button */}
-          <Button
-            fullWidth
-            variant="contained"
+        <Box sx={{ width: "100%", maxWidth: "400px", textAlign: "center" }}>
+          {/* Logo */}
+          <Box
+            component="img"
+            src={logo}
+            alt="Login Logo"
             sx={{
-              backgroundColor: "#23B6A4",
-              "&:hover": { backgroundColor: "#1f9b8c" },
-              mt: 2,
+              width: 70,
+              height: 70,
+              borderRadius: "50%",
+              objectFit: "cover",
+              margin: "0 auto",
+              mb: 3,
+            }}
+          />
+
+          <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+            Reset Your Password
+          </Typography>
+
+          {/* EMAIL INPUT */}
+          <TextField
+            label="Email Address"
+            variant="outlined"
+            fullWidth
+            sx={{ mb: 3, borderRadius: "10px" }}
+          />
+
+          {/* SUBMIT BUTTON */}
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{
+              py: 1.5,
+              backgroundColor: "#22A78E",
+              fontSize: "1rem",
+              textTransform: "none",
+              borderRadius: "10px",
+              "&:hover": { backgroundColor: "#1b8c77" },
             }}
           >
             Reset Password
           </Button>
+
+          <Typography
+            variant="body2"
+            sx={{ mt: 3, opacity: 0.7, cursor: "pointer" }}
+            onClick={() => (window.location.href = "/")}
+          >
+            Back to Login
+          </Typography>
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 }
-
-export default ForgotPassword;
