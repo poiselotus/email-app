@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Sidebar from "./sidebar";
 import MailToolBar from "./mail-features/MailToolBar";
 import MailEditor from "./mail-features/MailEditor";
 import { Button } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
+import Sidebar from "./Sidebar";
 
 function CouldNotRespond() {
   const [content, setContent] = useState("");
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#f6f7f8" }}>
-      <Sidebar />
+      <Sidebar/>
 
       <main style={{ flex: 1, padding: 24 }}>
         <div style={{ background: "#fff", padding: 20, borderRadius: 8 }}>
